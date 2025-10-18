@@ -1,0 +1,372 @@
+.lecture-detail {
+  width: 100%;
+}
+
+/* Navigation */
+.lecture-navigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #64748b;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.nav-link:hover {
+  color: #3b82f6;
+}
+
+.lecture-progress {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.progress-text {
+  font-size: 0.875rem;
+  color: #64748b;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.progress-bar {
+  width: 200px;
+  height: 6px;
+  background: #e2e8f0;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #3b82f6, #1d4ed8);
+  border-radius: 3px;
+  transition: width 0.3s ease;
+}
+
+/* Lecture Header */
+.lecture-header {
+  background: white;
+  border-radius: 1rem;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+}
+
+.lecture-header-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.lecture-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.lecture-number {
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  color: white;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.125rem;
+}
+
+.lecture-date {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #64748b;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.lecture-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1e293b;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.lecture-description {
+  font-size: 1.125rem;
+  color: #64748b;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.lecture-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+/* Lecture Content */
+.lecture-content {
+  background: white;
+  border-radius: 1rem;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+}
+
+.content-wrapper {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Markdown Content Styling */
+.content-wrapper h1,
+.content-wrapper h2,
+.content-wrapper h3,
+.content-wrapper h4,
+.content-wrapper h5,
+.content-wrapper h6 {
+  color: #1e293b;
+  font-weight: 600;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  line-height: 1.3;
+}
+
+.content-wrapper h1 {
+  font-size: 2rem;
+  border-bottom: 2px solid #e2e8f0;
+  padding-bottom: 0.5rem;
+}
+
+.content-wrapper h2 {
+  font-size: 1.75rem;
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 0.25rem;
+}
+
+.content-wrapper h3 {
+  font-size: 1.5rem;
+}
+
+.content-wrapper h4 {
+  font-size: 1.25rem;
+}
+
+.content-wrapper p {
+  color: #374151;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+
+.content-wrapper ul,
+.content-wrapper ol {
+  margin-bottom: 1.5rem;
+  padding-left: 1.5rem;
+}
+
+.content-wrapper li {
+  color: #374151;
+  line-height: 1.6;
+  margin-bottom: 0.5rem;
+}
+
+.content-wrapper strong {
+  color: #1e293b;
+  font-weight: 600;
+}
+
+.content-wrapper em {
+  color: #64748b;
+  font-style: italic;
+}
+
+.content-wrapper blockquote {
+  border-left: 4px solid #3b82f6;
+  background: #f8fafc;
+  padding: 1rem 1.5rem;
+  margin: 1.5rem 0;
+  border-radius: 0 0.5rem 0.5rem 0;
+}
+
+.content-wrapper blockquote p {
+  margin: 0;
+  color: #475569;
+  font-style: italic;
+}
+
+/* Code Styling */
+.content-wrapper pre {
+  background: #1e293b;
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  overflow-x: auto;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.content-wrapper code {
+  background: #f1f5f9;
+  color: #e11d48;
+  padding: 0.125rem 0.375rem;
+  border-radius: 0.25rem;
+  font-size: 0.875em;
+  font-weight: 500;
+}
+
+.content-wrapper pre code {
+  background: transparent;
+  color: #e2e8f0;
+  padding: 0;
+  border-radius: 0;
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+/* Syntax Highlighter Custom Styles */
+.content-wrapper pre div {
+  background: transparent !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.content-wrapper pre code {
+  background: transparent !important;
+  color: inherit !important;
+}
+
+/* Lecture Footer */
+.lecture-footer {
+  background: white;
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+}
+
+.lecture-footer-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Error State */
+.error-state {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+}
+
+.error-state svg {
+  color: #cbd5e1;
+  margin-bottom: 1rem;
+}
+
+.error-state h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 0.5rem;
+}
+
+.error-state p {
+  color: #64748b;
+  margin-bottom: 2rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .lecture-navigation {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+  
+  .lecture-progress {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .progress-bar {
+    width: 150px;
+  }
+  
+  .lecture-header {
+    padding: 1.5rem;
+  }
+  
+  .lecture-title {
+    font-size: 2rem;
+  }
+  
+  .lecture-content {
+    padding: 1.5rem;
+  }
+  
+  .lecture-footer {
+    padding: 1.5rem;
+  }
+  
+  .lecture-footer-content {
+    flex-direction: column;
+  }
+  
+  .content-wrapper h1 {
+    font-size: 1.75rem;
+  }
+  
+  .content-wrapper h2 {
+    font-size: 1.5rem;
+  }
+  
+  .content-wrapper h3 {
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .lecture-header {
+    padding: 1rem;
+  }
+  
+  .lecture-content {
+    padding: 1rem;
+  }
+  
+  .lecture-footer {
+    padding: 1rem;
+  }
+  
+  .lecture-title {
+    font-size: 1.75rem;
+  }
+  
+  .lecture-meta {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+  
+  .content-wrapper pre {
+    padding: 1rem;
+    font-size: 0.8125rem;
+  }
+}

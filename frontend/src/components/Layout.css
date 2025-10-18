@@ -1,0 +1,264 @@
+.layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header */
+.header {
+  background: white;
+  border-bottom: 1px solid #e2e8f0;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 4rem;
+}
+
+.header-brand {
+  display: flex;
+  align-items: center;
+}
+
+.brand-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+  gap: 0.75rem;
+}
+
+.brand-logo {
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.brand-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.brand-subtitle {
+  font-size: 0.75rem;
+  color: #64748b;
+  font-weight: 400;
+}
+
+/* Desktop Navigation */
+.nav-desktop {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  color: #64748b;
+  font-weight: 500;
+  font-size: 0.875rem;
+  transition: all 0.2s ease;
+}
+
+.nav-link:hover {
+  color: #3b82f6;
+  background-color: #f8fafc;
+}
+
+.nav-link-active {
+  color: #3b82f6;
+  background-color: #eff6ff;
+}
+
+/* Mobile Menu Button */
+.mobile-menu-button {
+  display: none;
+  background: none;
+  border: none;
+  color: #64748b;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.mobile-menu-button:hover {
+  color: #3b82f6;
+  background-color: #f8fafc;
+}
+
+/* Mobile Navigation */
+.nav-mobile {
+  display: none;
+  background: white;
+  border-top: 1px solid #e2e8f0;
+  padding: 1rem;
+}
+
+.nav-mobile-link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  color: #64748b;
+  font-weight: 500;
+  font-size: 0.875rem;
+  transition: all 0.2s ease;
+  margin-bottom: 0.25rem;
+}
+
+.nav-mobile-link:hover {
+  color: #3b82f6;
+  background-color: #f8fafc;
+}
+
+.nav-mobile-link-active {
+  color: #3b82f6;
+  background-color: #eff6ff;
+}
+
+/* Main Content */
+.main {
+  flex: 1;
+  background-color: #f8fafc;
+}
+
+.main-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  min-height: calc(100vh - 8rem);
+}
+
+/* Footer */
+.footer {
+  background: white;
+  border-top: 1px solid #e2e8f0;
+  margin-top: auto;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem 1rem;
+}
+
+.footer-content {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.footer-logo {
+  font-size: 1.5rem;
+}
+
+.footer-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.footer-info {
+  text-align: right;
+  color: #64748b;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.footer-info p {
+  margin-bottom: 0.25rem;
+}
+
+.footer-bottom {
+  border-top: 1px solid #e2e8f0;
+  padding-top: 1rem;
+  text-align: center;
+  color: #94a3b8;
+  font-size: 0.75rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .header-container {
+    padding: 0 1rem;
+    height: 3.5rem;
+  }
+
+  .brand-text {
+    display: none;
+  }
+
+  .brand-logo {
+    font-size: 1.5rem;
+  }
+
+  .nav-desktop {
+    display: none;
+  }
+
+  .mobile-menu-button {
+    display: block;
+  }
+
+  .nav-mobile {
+    display: block;
+  }
+
+  .main-container {
+    padding: 1rem;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+
+  .footer-info {
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-container {
+    padding: 0 0.75rem;
+  }
+
+  .main-container {
+    padding: 0.75rem;
+  }
+
+  .footer-container {
+    padding: 1.5rem 0.75rem 1rem;
+  }
+}
