@@ -13,7 +13,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///python_course.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # Настройка CORS для работы с React frontend
-CORS(app, origins=['http://localhost:3000','https://python-course-flax.vercel.app/'])
+CORS(app)
 
 # Импорт моделей (они создают db экземпляр)
 from models import db, Lecture, Test, Question, TestResult, init_db
