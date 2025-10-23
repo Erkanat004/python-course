@@ -34,7 +34,7 @@ print("Привет, мир!")
 
     try {
       // Отправляем код на наш бэкенд для выполнения
-      const response = await fetch('http://localhost:5000/api/compiler/execute', {
+      const response = await fetch('http://python-course-zg1y-dap4i8lay-erkanat004s-projects.vercel.app/api/compiler/execute', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
