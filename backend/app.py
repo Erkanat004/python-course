@@ -14,7 +14,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql+psycopg2://neondb_owner:npg_
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # Настройка CORS для работы с React frontend
-CORS(app, supports_credentials=True, origins=['http://localhost:3000'])
+CORS(app)
 
 # Импорт моделей (они создают db экземпляр)
 from models import db, Lecture, Test, Question, TestResult, init_db
