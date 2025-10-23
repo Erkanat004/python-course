@@ -2,6 +2,7 @@ from flask import Blueprint, jsonify, request
 from models import db, Test, Question, TestResult
 from datetime import datetime
 import json
+from routes.auth import require_admin
 
 bp = Blueprint('tests', __name__, url_prefix='/api/tests')
 
@@ -154,6 +155,7 @@ def get_test_results(test_id):
         }), 500
 
 @bp.route('/', methods=['POST'])
+@require_admin
 def create_test():
     """Создать новый тест"""
     try:

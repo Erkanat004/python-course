@@ -9,11 +9,12 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'python-course-secret-key'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql+psycopg2://neondb_owner:npg_um3pnE1UiLqy@ep-purple-snow-a4j2vie2-pooler.us-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require'
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql+psycopg2://neondb_owner:npg_um3pnE1UiLqy@ep-purple-snow-a4j2vie2-pooler.us-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///python_course.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # Настройка CORS для работы с React frontend
-CORS(app)
+CORS(app, supports_credentials=True, origins=['http://localhost:3000'])
 
 # Импорт моделей (они создают db экземпляр)
 from models import db, Lecture, Test, Question, TestResult, init_db
@@ -26,12 +27,15 @@ with app.app_context():
     db.create_all()
 
 # Импорт маршрутов
-from routes import lectures, tests, admin
+from routes import lectures, tests, admin, auth, users, compiler
 
 # Регистрация blueprint'ов
 app.register_blueprint(lectures.bp)
 app.register_blueprint(tests.bp)
 app.register_blueprint(admin.bp)
+app.register_blueprint(auth.bp)
+app.register_blueprint(users.bp)
+app.register_blueprint(compiler.bp)
 
 @app.route('/')
 def index():

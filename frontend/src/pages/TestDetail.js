@@ -18,9 +18,17 @@ const TestDetail = () => {
   const [studentName, setStudentName] = useState('');
   const [showNameInput, setShowNameInput] = useState(true);
   const [startTime, setStartTime] = useState(null);
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
     fetchTest();
+    // Получаем информацию о пользователе
+    const savedUser = localStorage.getItem('user');
+    if (savedUser) {
+      const userData = JSON.parse(savedUser);
+      setUser(userData);
+      setStudentName(userData.username);
+    }
   }, [id]);
 
   useEffect(() => {
@@ -180,7 +188,7 @@ const TestDetail = () => {
 
             <div className="name-input-section">
               <label htmlFor="studentName" className="form-label">
-                Введите ваше имя:
+                {user ? 'Ваше имя (из аккаунта):' : 'Введите ваше имя:'}
               </label>
               <input
                 id="studentName"
@@ -190,7 +198,13 @@ const TestDetail = () => {
                 className="form-input"
                 placeholder="Ваше имя"
                 maxLength={100}
+                disabled={user ? true : false}
               />
+              {user && (
+                <p className="name-note">
+                  Имя взято из вашего аккаунта. Если хотите изменить, выйдите из аккаунта.
+                </p>
+              )}
             </div>
 
             <button 

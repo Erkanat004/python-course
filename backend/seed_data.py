@@ -1,4 +1,4 @@
-from models import db, Lecture, Test, Question
+from models import db, Lecture, Test, Question, User
 from datetime import datetime
 
 def init_data():
@@ -10,6 +10,16 @@ def init_data():
         return
     
     print("Заполняем базу данных начальными данными...")
+    
+    # Создаем тестового администратора
+    admin_user = User(
+        username='admin_E',
+        email='admin@example.com',
+        is_admin=True
+    )
+    admin_user.set_password('admin041120')
+    db.session.add(admin_user)
+    print("Создан тестовый администратор: admin_E / admin041120")
     
     # Создаем лекции
     lectures_data = [

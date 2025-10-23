@@ -14,31 +14,31 @@ from pathlib import Path
 def print_banner():
     """Печать баннера приложения"""
     banner = """
-    ╔══════════════════════════════════════════════════════════════╗
-    ║                    🐍 Python Course                         ║
-    ║              Учебный сайт по программированию               ║
-    ║                                                              ║
-    ║  🎯 Лекции по Python                                         ║
-    ║  🧩 Интерактивные тесты                                     ║
-    ║  📊 Проверка знаний                                         ║
-    ║                                                              ║
-    ║  Backend:  http://localhost:5000                             ║
-    ║  Frontend: http://localhost:3000                             ║
-    ╚══════════════════════════════════════════════════════════════╝
+    ================================================================
+                    Python Course
+              Educational Python Programming Site
+                                                              
+      Lectures on Python                                         
+      Interactive Tests                                     
+      Knowledge Testing                                         
+                                                              
+      Backend:  http://localhost:5000                             
+      Frontend: http://localhost:3000                             
+    ================================================================
     """
     print(banner)
 
 def check_python_version():
     """Проверка версии Python"""
     if sys.version_info < (3, 7):
-        print("❌ Ошибка: Требуется Python 3.7 или выше")
-        print(f"   Текущая версия: {sys.version}")
+        print("ERROR: Requires Python 3.7 or higher")
+        print(f"   Current version: {sys.version}")
         sys.exit(1)
-    print(f"✅ Python версия: {sys.version.split()[0]}")
+    print(f"Python version: {sys.version.split()[0]}")
 
 def install_requirements():
     """Установка зависимостей"""
-    print("\n📦 Установка зависимостей...")
+    print("\nInstalling dependencies...")
     
     # Backend requirements
     backend_req = Path("backend/requirements.txt")
@@ -47,31 +47,32 @@ def install_requirements():
             subprocess.run([
                 sys.executable, "-m", "pip", "install", "-r", str(backend_req)
             ], check=True, capture_output=True)
-            print("✅ Backend зависимости установлены")
+            print("Backend dependencies installed")
         except subprocess.CalledProcessError as e:
-            print(f"❌ Ошибка установки backend зависимостей: {e}")
+            print(f"Error installing backend dependencies: {e}")
             return False
     
     # Frontend dependencies
     frontend_dir = Path("frontend")
     if frontend_dir.exists():
-        print("📦 Установка frontend зависимостей...")
+        print("Installing frontend dependencies...")
         try:
             subprocess.run(["npm", "install"], cwd=frontend_dir, check=True)
-            print("✅ Frontend зависимости установлены")
-        except subprocess.CalledProcessError as e:
-            print(f"❌ Ошибка установки frontend зависимостей: {e}")
-            print("   Убедитесь, что Node.js и npm установлены")
-            return False
+            print("Frontend dependencies installed")
+        except (subprocess.CalledProcessError, FileNotFoundError) as e:
+            print(f"Error installing frontend dependencies: {e}")
+            print("   Make sure Node.js and npm are installed")
+            print("   You can skip frontend setup and run it manually later")
+            # Не останавливаем выполнение, если npm не найден
     
     return True
 
 def start_backend():
     """Запуск backend сервера"""
-    print("\n🚀 Запуск backend сервера...")
+    print("\nStarting backend server...")
     backend_dir = Path("backend")
     if not backend_dir.exists():
-        print("❌ Папка backend не найдена")
+        print("ERROR: Backend folder not found")
         return None
     
     try:
@@ -79,18 +80,18 @@ def start_backend():
         process = subprocess.Popen([
             sys.executable, "app.py"
         ], cwd=backend_dir)
-        print("✅ Backend сервер запущен на http://localhost:5000")
+        print("Backend server started on http://localhost:5000")
         return process
     except Exception as e:
-        print(f"❌ Ошибка запуска backend: {e}")
+        print(f"Error starting backend: {e}")
         return None
 
 def start_frontend():
     """Запуск frontend сервера"""
-    print("\n🎨 Запуск frontend сервера...")
+    print("\nStarting frontend server...")
     frontend_dir = Path("frontend")
     if not frontend_dir.exists():
-        print("❌ Папка frontend не найдена")
+        print("ERROR: Frontend folder not found")
         return None
     
     try:
@@ -98,21 +99,26 @@ def start_frontend():
         process = subprocess.Popen([
             "npm", "start"
         ], cwd=frontend_dir)
-        print("✅ Frontend сервер запущен на http://localhost:3000")
+        print("Frontend server started on http://localhost:3000")
         return process
+    except FileNotFoundError:
+        print("ERROR: npm not found. Please install Node.js and npm first.")
+        print("   Download from: https://nodejs.org/")
+        print("   Then run: cd frontend && npm install && npm start")
+        return None
     except Exception as e:
-        print(f"❌ Ошибка запуска frontend: {e}")
+        print(f"Error starting frontend: {e}")
         return None
 
 def wait_for_servers():
     """Ожидание запуска серверов"""
-    print("\n⏳ Ожидание запуска серверов...")
+    print("\nWaiting for servers to start...")
     time.sleep(5)
-    print("🎉 Серверы должны быть готовы!")
+    print("Servers should be ready!")
 
 def cleanup_processes(processes):
     """Очистка процессов при завершении"""
-    print("\n🛑 Завершение работы...")
+    print("\nShutting down...")
     for process in processes:
         if process and process.poll() is None:
             process.terminate()
@@ -120,7 +126,7 @@ def cleanup_processes(processes):
                 process.wait(timeout=5)
             except subprocess.TimeoutExpired:
                 process.kill()
-    print("✅ Процессы завершены")
+    print("Processes terminated")
 
 def main():
     """Главная функция"""
@@ -131,7 +137,7 @@ def main():
     
     # Установка зависимостей
     if not install_requirements():
-        print("❌ Не удалось установить зависимости")
+        print("ERROR: Failed to install dependencies")
         sys.exit(1)
     
     processes = []
@@ -148,19 +154,19 @@ def main():
             processes.append(frontend_process)
         
         if not processes:
-            print("❌ Не удалось запустить ни один сервер")
+            print("ERROR: Failed to start any server")
             sys.exit(1)
         
         # Ожидание запуска
         wait_for_servers()
         
         print("\n" + "="*60)
-        print("🎯 Python Course запущен!")
-        print("📚 Лекции: http://localhost:3000/lectures")
-        print("🧩 Тесты: http://localhost:3000/tests")
-        print("🏠 Главная: http://localhost:3000")
+        print("Python Course is running!")
+        print("Lectures: http://localhost:3000/lectures")
+        print("Tests: http://localhost:3000/tests")
+        print("Home: http://localhost:3000")
         print("="*60)
-        print("\nНажмите Ctrl+C для завершения работы")
+        print("\nPress Ctrl+C to stop")
         
         # Ожидание завершения
         try:
@@ -169,13 +175,13 @@ def main():
                 # Проверяем, что процессы еще работают
                 for process in processes:
                     if process.poll() is not None:
-                        print(f"⚠️  Процесс завершился неожиданно")
+                        print(f"WARNING: Process terminated unexpectedly")
                         raise KeyboardInterrupt
         except KeyboardInterrupt:
             pass
     
     except Exception as e:
-        print(f"❌ Ошибка: {e}")
+        print(f"ERROR: {e}")
     
     finally:
         # Очистка процессов

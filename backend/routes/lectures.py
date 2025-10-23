@@ -1,6 +1,7 @@
 from flask import Blueprint, jsonify, request
 from models import db, Lecture
 from datetime import datetime
+from routes.auth import require_admin
 
 bp = Blueprint('lectures', __name__, url_prefix='/api/lectures')
 
@@ -35,6 +36,7 @@ def get_lecture(lecture_id):
         }), 500
 
 @bp.route('/', methods=['POST'])
+@require_admin
 def create_lecture():
     """Создать новую лекцию"""
     try:
@@ -70,6 +72,7 @@ def create_lecture():
         }), 500
 
 @bp.route('/<int:lecture_id>', methods=['PUT'])
+@require_admin
 def update_lecture(lecture_id):
     """Обновить лекцию"""
     try:
@@ -110,6 +113,7 @@ def update_lecture(lecture_id):
         }), 500
 
 @bp.route('/<int:lecture_id>', methods=['DELETE'])
+@require_admin
 def delete_lecture(lecture_id):
     """Удалить лекцию"""
     try:

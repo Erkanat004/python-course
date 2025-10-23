@@ -1,10 +1,12 @@
 from flask import Blueprint, jsonify, request
 from models import db, Test, Question
 from datetime import datetime
+from .auth import require_admin
 
 bp = Blueprint('admin', __name__, url_prefix='/api/admin')
 
 @bp.route('/questions/<int:test_id>', methods=['POST'])
+@require_admin
 def add_question_to_test(test_id):
     """Добавить вопрос к существующему тесту"""
     try:
@@ -46,6 +48,7 @@ def add_question_to_test(test_id):
         }), 500
 
 @bp.route('/questions/<int:question_id>', methods=['PUT'])
+@require_admin
 def update_question(question_id):
     """Обновить вопрос"""
     try:
@@ -92,6 +95,7 @@ def update_question(question_id):
         }), 500
 
 @bp.route('/questions/<int:question_id>', methods=['DELETE'])
+@require_admin
 def delete_question(question_id):
     """Удалить вопрос"""
     try:
@@ -113,6 +117,7 @@ def delete_question(question_id):
         }), 500
 
 @bp.route('/stats', methods=['GET'])
+@require_admin
 def get_stats():
     """Получить статистику по курсу"""
     try:
