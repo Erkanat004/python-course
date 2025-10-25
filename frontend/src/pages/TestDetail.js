@@ -300,7 +300,7 @@ const TestDetail = () => {
             <p className="question-text">{currentQ.question_text}</p>
             
             <div className="options">
-              {['A', 'B', 'C', 'D'].map(option => {
+              {['a', 'b', 'c', 'd'].map(option => {
                 const optionText = currentQ[`option_${option.toLowerCase()}`];
                 if (!optionText) return null;
                 
