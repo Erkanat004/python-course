@@ -34,7 +34,7 @@ print("Привет, мир!")
 
     try {
       // Отправляем код на наш бэкенд для выполнения
-     const response = await fetch('https://python-course-zg1y-dap4i8lay-erkanat004s-projects.vercel.app/api/compiler/execute', {
+     const response = await fetch('https://python-course-zg1y-git-main-erkanat004s-projects.vercel.app/api/compiler/execute', {
 
         method: 'POST',
         headers: {
