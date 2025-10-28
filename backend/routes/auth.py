@@ -154,11 +154,7 @@ def require_auth(f):
 def require_admin(f):
     """Декоратор для проверки прав администратора"""
     def decorated_function(*args, **kwargs):
-        if 'user_id' not in session:
-            return jsonify({
-                'success': False,
-                'error': 'Требуется авторизация 2'
-            }), 401
+        
         if not session.get('is_admin'):
             return jsonify({
                 'success': False,
