@@ -16,12 +16,9 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 # Настройка CORS для работы с React frontend
 #CORS(app)
 
-#CORS(app, supports_credentials=True, origins=["https://python-course-flax.vercel.app"])
-CORS(
-    app,
-    supports_credentials=True,           # Включаем работу с cookies и headers авторизации
-    origins=["https://python-course-flax.vercel.app", "http://localhost:3000"]  # Укажи все фронты, с которых будут запросы
-)
+CORS(app, supports_credentials=True)
+     #, origins=["https://python-course-flax.vercel.app"])
+
 # Импорт моделей (они создают db экземпляр)
 from models import db, Lecture, Test, Question, TestResult, init_db
 
