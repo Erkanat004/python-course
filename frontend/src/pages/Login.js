@@ -123,12 +123,7 @@ const Login = () => {
           </p>
         </div>
 
-        //<div className="test-credentials">
-         // <h3>Тестовые данные:</h3>
-         // <p><strong>Администратор:</strong></p>
-         // <p>Логин: admin_E</p>
-         // <p>Пароль: admin041120</p>
-            //</div>
+      
       </div>
     </div>
   );
