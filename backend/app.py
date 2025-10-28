@@ -12,6 +12,12 @@ app.config['SECRET_KEY'] = 'python-course-secret-key'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql+psycopg2://neondb_owner:npg_um3pnE1UiLqy@ep-purple-snow-a4j2vie2-pooler.us-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require'
 #app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///python_course.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+# Настройки cookie для корректной работы с сессиями между доменами (Vercel)
+app.config['SESSION_COOKIE_SAMESITE'] = 'None'
+app.config['SESSION_COOKIE_SECURE'] = True  # обязательно для HTTPS
+app.config['SESSION_COOKIE_HTTPONLY'] = True
+app.config['SESSION_COOKIE_PATH'] = '/'
+
 
 # Настройка CORS для работы с React frontend
 #CORS(app)
