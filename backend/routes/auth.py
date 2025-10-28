@@ -145,7 +145,7 @@ def require_auth(f):
         if 'user_id' not in session:
             return jsonify({
                 'success': False,
-                'error': 'Требуется авторизация'
+                'error': 'Требуется авторизация 1'
             }), 401
         return f(*args, **kwargs)
     decorated_function.__name__ = f.__name__
@@ -157,7 +157,7 @@ def require_admin(f):
         if 'user_id' not in session:
             return jsonify({
                 'success': False,
-                'error': 'Требуется авторизация'
+                'error': 'Требуется авторизация 2'
             }), 401
         if not session.get('is_admin'):
             return jsonify({
