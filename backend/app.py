@@ -14,9 +14,9 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql+psycopg2://neondb_owner:npg_
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # Настройка CORS для работы с React frontend
-CORS(app)
+#CORS(app)
 
-#CORS(app, supports_credentials=True, origins=["https://python-course-flax.vercel.app"])
+CORS(app, supports_credentials=True, origins=["https://python-course-flax.vercel.app"])
 
 # Импорт моделей (они создают db экземпляр)
 from models import db, Lecture, Test, Question, TestResult, init_db
